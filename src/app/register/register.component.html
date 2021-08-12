@@ -1,0 +1,32 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>VISHAL VAIBHAV</mat-card-subtitle>
+  </mat-card-header>
+<section class="register-form">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap = "15px" #f="ngForm">
+  <mat-form-field>
+    <input type="text" matInput placeholder="First Name" ngModel name="firstname" required #firstnameInput="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Last Name" ngModel name="lastname" required #lastnameInput="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Username"  ngModel name="username" required #usernameInput="ngModel">
+    <mat-error *ngIf="usernameInput.hasError('required')">Field is empty</mat-error>
+    <mat-error *ngIf="!usernameInput.hasError('required')">Invalid Username</mat-error>
+  </mat-form-field>
+  <mat-form-field hintLabel="Should be at least 10 characters long">
+    <input type="password" matInput placeholder="Password" ngModel name="password" required minlength="10" #pwInput="ngModel">
+    <mat-hint align="end">{{ pwInput.value?.length}}/ 10</mat-hint>
+    <mat-error>Has to be atleast 10 characters</mat-error>
+  </mat-form-field>
+    <mat-checkbox ngModel name="agree" required>
+      I Agree to Terms and Conditions.
+    </mat-checkbox>
+  <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" (click)="goLoginPage()">Register</button>
+  </form>
+</section>
+</mat-card>
+
